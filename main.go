@@ -1,4 +1,4 @@
-// vmd creates a markdown document with the current date in the filename and
+// govmd creates a markdown document with the current date in the filename and
 // pre-filled YAML title, author, and date template fields and opens the file
 // in Vim.
 package main
@@ -34,7 +34,7 @@ func main() {
 	yamlHeader += "---\n"
 	yamlHeader += "title: \"<++>\"\n"
 	yamlHeader += "author: \"<++>\"\n"
-	yamlHeader += "date: \"" + string(now.Format("January 02, 2006")) + "\"\n"
+	yamlHeader += "date: \"" + now.Format("January 02, 2006") + "\"\n"
 	yamlHeader += "---\n\n"
 	yamlHeader += "<++>\n"
 
