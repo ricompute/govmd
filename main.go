@@ -23,9 +23,9 @@ func main() {
 	// Build file name
 	switch len(os.Args) {
 	case 1:
-		fileName += string(now.Format("2006-01-02-150405")) + ".md"
+		fileName += now.Format("2006-01-02-150405") + ".md"
 	case 2:
-		fileName += string(now.Format("2006-01-02")) + "-" + os.Args[1] + ".md"
+		fileName += now.Format("2006-01-02") + "-" + os.Args[1] + ".md"
 	default:
 		panic("vmd: too many command line arguments")
 	}
