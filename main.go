@@ -27,7 +27,8 @@ func main() {
 	case 2:
 		fileName += now.Format("2006-01-02") + "-" + os.Args[1] + ".md"
 	default:
-		panic("vmd: too many command line arguments")
+		fmt.Println("govmd: too many command line arguments")
+		os.Exit(1)
 	}
 
 	// Build YAML header
@@ -41,7 +42,7 @@ func main() {
 	// Create file
 	f, err := os.Create(fileName)
 	if err != nil {
-		fmt.Printf("vmd: %s", err)
+		fmt.Printf("govmd: %s", err)
 	}
 
 	defer f.Close()
@@ -49,10 +50,10 @@ func main() {
 	// Write file
 	nbytes, err := f.WriteString(yamlHeader)
 	if nbytes == 0 {
-		fmt.Println("vmd: wrote 0 bytes!")
+		fmt.Println("govmd: wrote 0 bytes!")
 	}
 	if err != nil {
-		fmt.Printf("vmd: %s", err)
+		fmt.Printf("govmd: %s", err)
 	}
 	f.Sync()
 
@@ -62,7 +63,7 @@ func main() {
 	cmd.Stdout = os.Stdout
 	vimErr := cmd.Run()
 	if vimErr != nil {
-		fmt.Printf("vmd: trying to run Vim: %s", vimErr)
+		fmt.Printf("govmd: trying to run Vim: %s", vimErr)
 	}
 
 }
